@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boss.train.rbac.dao.RoleMenuOperationDao">
+
+    <resultMap id="BaseResultMap" type="com.boss.train.rbac.entities.po.RoleMenuOperationPO">
+        <id column="rmid" property="rmid" jdbcType="INTEGER"/>
+        <id column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="createRMO" parameterType="com.boss.train.rbac.entities.dto.RoleMenuOperationDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into role_menu_operation (rmid,name) values (#{rmid},#{name});
+    </insert>
+
+    <delete id="deleteRMO" parameterType="Integer">
+        delete from role_menu_operation where id = #{id};
+    </delete>
+
+    <update id="updateRMO" parameterType="com.boss.train.rbac.entities.dto.RoleMenuOperationDTO">
+        update role_menu_operation set rmid = #{rmid},name = #{name} where id = #{id};
+    </update>
+
+    <select id="getRMO" parameterType="Integer" resultMap="BaseResultMap">
+        select * from role_menu_operation where id = #{id};
+    </select>
+
+</mapper>

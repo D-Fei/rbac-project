@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boss.train.rbac.dao.UserDao">
+
+    <resultMap id="BaseResultMap" type="com.boss.train.rbac.entities.po.UserPO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="userName" property="userName" jdbcType="VARCHAR"/>
+        <id column="password" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="createUser" parameterType="com.boss.train.rbac.entities.dto.UserDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into user (userName,password) values (#{userName},#{password});
+    </insert>
+
+    <delete id="deleteUser" parameterType="Integer">
+        delete from user where id = #{id};
+    </delete>
+
+    <update id="updateUser" parameterType="com.boss.train.rbac.entities.dto.UserDTO">
+        update user set userName = #{userName},password = #{password} where id = #{id};
+    </update>
+
+    <select id="getUser" parameterType="Integer" resultMap="BaseResultMap">
+        select * from user where id = #{id};
+    </select>
+</mapper>

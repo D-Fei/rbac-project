@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boss.train.rbac.dao.MenuDao">
+
+    <resultMap id="BaseResultMap" type="com.boss.train.rbac.entities.po.MenuPO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="createMenu" parameterType="com.boss.train.rbac.entities.dto.MenuDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into menu (name) values (#{name});
+    </insert>
+
+    <delete id="deleteMenu" parameterType="Integer">
+        delete from menu where id = #{id};
+    </delete>
+
+    <update id="updateMenu" parameterType="com.boss.train.rbac.entities.dto.MenuDTO">
+        update menu set name = #{name} where id = #{id};
+    </update>
+
+    <select id="getMenu" parameterType="Integer" resultMap="BaseResultMap">
+        select * from menu where id = #{id};
+    </select>
+
+</mapper>
