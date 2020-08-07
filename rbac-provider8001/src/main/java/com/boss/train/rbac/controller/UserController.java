@@ -20,6 +20,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
+
     @PostMapping(value = "/user/create")
     public CommonResult createUser(@RequestBody UserVO userVO) {
         int result = userService.createUser(userVO);
@@ -50,6 +51,7 @@ public class UserController {
         return new CommonResult(444, "修改用户失败！", null);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/user/get/{id}")
     public CommonResult getUser(@PathVariable("id") Integer id) {
         userDTO = userService.getUser(id);
