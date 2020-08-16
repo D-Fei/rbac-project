@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.LinkedList;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -62,6 +64,22 @@ public class UserController {
             return new CommonResult(200, "查询成功！", userVO);
         }
         return new CommonResult(444, "查询失败！", null);
+    }
+
+    @GetMapping(value = "/users/get")
+    public List<UserVO> getUsers() {
+        List<UserDTO> userDTOS = userService.getUsers();
+        log.debug("************查询结果：" + userDTOS);
+        if (userDTOS != null) {
+            List<UserVO> userVOS = new LinkedList<>();
+            UserVO userVO = new UserVO();
+            for (UserDTO user:userDTOS){
+                BeanUtil.copyProperties(user, userVO);
+                userVOS.add(userVO);
+            }
+            return userVOS;
+        }
+        return null;
     }
 
 }

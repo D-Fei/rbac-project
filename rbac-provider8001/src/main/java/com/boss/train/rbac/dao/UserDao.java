@@ -5,6 +5,8 @@ import com.boss.train.rbac.entities.po.UserPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface UserDao {
 
@@ -15,5 +17,7 @@ public interface UserDao {
     public Integer updateUser(UserDTO userDTO);
 
     public UserPO getUser(@Param("id") Integer id);
+
+    public List<UserPO> getUsers();
 
 }

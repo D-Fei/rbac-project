@@ -24,4 +24,8 @@
     <select id="getUser" parameterType="Integer" resultMap="BaseResultMap">
         select * from user where id = #{id};
     </select>
+
+    <select id="getUsers" resultMap="BaseResultMap">
+        select * from user;
+    </select>
 </mapper>
