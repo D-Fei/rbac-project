@@ -25,6 +25,10 @@
         select * from user where id = #{id};
     </select>
 
+    <select id="getUserByName" parameterType="String" resultMap="BaseResultMap">
+        select * from user where userName = #{userName};
+    </select>
+
     <select id="getUsers" resultMap="BaseResultMap">
         select * from user;
     </select>

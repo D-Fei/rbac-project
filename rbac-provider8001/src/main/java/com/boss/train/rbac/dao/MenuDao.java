@@ -5,6 +5,8 @@ import com.boss.train.rbac.entities.po.MenuPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface MenuDao {
 
@@ -15,5 +17,9 @@ public interface MenuDao {
     public Integer updateMenu(MenuDTO menuDTO);
 
     public MenuPO getMenu(@Param("id") Integer id);
+
+    public List<MenuPO> getMenus();
+
+    public List<MenuPO> getMenusByParentId(Integer parentId);
 
 }

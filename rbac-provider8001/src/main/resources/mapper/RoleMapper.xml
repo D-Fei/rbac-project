@@ -24,4 +24,12 @@
         select * from role where id = #{id};
     </select>
 
+    <select id="getRoles" resultMap="BaseResultMap">
+        select * from role;
+    </select>
+
+    <select id="getRoleByName" parameterType="String" resultMap="BaseResultMap">
+        select * from role where role = #{roleName};
+    </select>
+
 </mapper>

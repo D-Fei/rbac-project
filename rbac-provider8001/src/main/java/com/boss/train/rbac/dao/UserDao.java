@@ -20,4 +20,6 @@ public interface UserDao {
 
     public List<UserPO> getUsers();
 
+    public UserPO getUserByName(String userName);
+
 }

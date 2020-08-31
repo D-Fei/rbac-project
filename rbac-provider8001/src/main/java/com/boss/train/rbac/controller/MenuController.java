@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -61,4 +62,16 @@ public class MenuController {
         }
         return new CommonResult(444, "查询菜单成功！", null);
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/menus/get")
+    public CommonResult getMenus() {
+        List<MenuDTO> menuDTOS = menuService.getMenus();
+        log.debug("***********查询结果：" + menuDTOS);
+        if (menuDTOS != null) {
+            return new CommonResult(200, "查询菜单成功！", menuDTOS);
+        }
+        return new CommonResult(200, "查询菜单失败！", null);
+    }
+
 }

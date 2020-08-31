@@ -5,6 +5,8 @@ import com.boss.train.rbac.entities.po.RolePO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface RoleDao {
 
@@ -16,4 +18,7 @@ public interface RoleDao {
 
     public RolePO getRole(@Param("id") Integer id);
 
+    public List<RolePO> getRoles();
+
+    public RolePO getRoleByName(String roleName);
 }

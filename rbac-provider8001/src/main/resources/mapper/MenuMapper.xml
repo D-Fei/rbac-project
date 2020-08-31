@@ -6,10 +6,13 @@
     <resultMap id="BaseResultMap" type="com.boss.train.rbac.entities.po.MenuPO">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <id column="name" property="name" jdbcType="VARCHAR"/>
+        <id column="path" property="path" jdbcType="VARCHAR"/>
+        <id column="hidden" property="hidden" jdbcType="TINYINT"/>
+        <id column="parentId" property="parentId" jdbcType="INTEGER"/>
     </resultMap>
 
     <insert id="createMenu" parameterType="com.boss.train.rbac.entities.dto.MenuDTO" useGeneratedKeys="true" keyProperty="id">
-        insert into menu (name) values (#{name});
+        insert into menu (name,path,hidden,parentId) values (#{name},#{path},#{hidden},#{parentId});
     </insert>
 
     <delete id="deleteMenu" parameterType="Integer">
@@ -17,11 +20,19 @@
     </delete>
 
     <update id="updateMenu" parameterType="com.boss.train.rbac.entities.dto.MenuDTO">
-        update menu set name = #{name} where id = #{id};
+        update menu set name = #{name},path = #{path},hidden = #{hidden},parentId = #{parentId} where id = #{id};
     </update>
 
     <select id="getMenu" parameterType="Integer" resultMap="BaseResultMap">
         select * from menu where id = #{id};
+    </select>
+
+    <select id="getMenus" resultMap="BaseResultMap">
+        select * from menu;
+    </select>
+
+    <select id="getMenusByParentId" parameterType="Integer" resultMap="BaseResultMap">
+        select * from menu where parentId = #{parentId};
     </select>
 
 </mapper>

@@ -18,4 +18,10 @@ public interface UserService {
 
     public List<UserDTO> getUsers();
 
+    public boolean login(UserVO userVO);
+
+    public UserDTO getUserByName(String userName);
+
+    public List<Integer> getRoleId(Integer uid);
+
 }
